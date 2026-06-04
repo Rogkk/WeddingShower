@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chá de Cozinha</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <!-- HERO -->
+    <section class="hero">
+
+        <img src="{{ url_for('static', filename='img/casal.jpg') }}" alt="Casal">
+
+        <div class="overlay">
+
+            <h1>Chá de Cozinha</h1>
+
+            <p>
+                Estamos muito felizes em compartilhar este momento especial com você!
+            </p>
+
+            <p>
+                Escolha um presente da lista abaixo para nos ajudar a construir nosso novo lar.
+            </p>
+
+            <p>
+                Após selecionar um presente ele ficará indisponível para os demais convidados.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- FORMULÁRIO -->
+    <section class="form-section">
+
+        <div class="container">
+
+            <h2>Escolha seu presente</h2>
+
+            <form id="giftForm">
+
+                <input
+                    type="text"
+                    id="nome"
+                    placeholder="Digite seu nome"
+                    required
+                >
+
+                <select id="presente" required>
+                    <option value="">Carregando presentes...</option>
+                </select>
+
+                <button type="submit">
+                    Confirmar Presente
+                </button>
+
+            </form>
+
+            <div id="mensagem"></div>
+
+        </div>
+
+    </section>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
