@@ -13,22 +13,40 @@
     <section class="hero">
 
         <img src="{{ url_for('static', filename='img/casal.jpg') }}" alt="Casal">
-
+        
         <div class="overlay">
 
-            <h1>Chá de Cozinha</h1>
+            <div class="hero-content">
 
-            <p>
-                Estamos muito felizes em compartilhar este momento especial com você!
-            </p>
+                <h2 class="couple">
+                    Tamires & Daniel
+                </h2>
 
-            <p>
-                Escolha um presente da lista abaixo para nos ajudar a construir nosso novo lar.
-            </p>
+                <h1>
+                    Chá de Cozinha
+                </h1>
 
-            <p>
-                Após selecionar um presente ele ficará indisponível para os demais convidados.
-            </p>
+                <div class="divider"></div>
+
+                <p class="event-date">
+                    18 de Julho de 2026
+                </p>
+
+                <div class="divider"></div>
+
+                <br>
+                <p class="event-location">
+                    Local: A confirmar
+                </p>
+
+                <br><br>
+                <p class="event-text">
+                    Sua presença é muito importante para nós.
+                    Escolha um presente da lista abaixo para
+                    nos ajudar a construir nosso novo lar.
+                </p>
+
+            </div>
 
         </div>
 
@@ -67,6 +85,6 @@
     </section>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
-
+    
 </body>
 </html>

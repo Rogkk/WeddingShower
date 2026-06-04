@@ -1,40 +1,113 @@
-<h1>Painel Administrativo</h1>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo</title>
 
-<h2>Presentes Escolhidos</h2>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body>
 
-<table border="1">
-    <tr>
-        <th>Convidado</th>
-        <th>Presente</th>
-    </tr>
+<div class="dashboard">
 
-    {% for escolha in escolhas %}
-    <tr>
-        <td>{{ escolha.nome_convidado }}</td>
-        <td>{{ escolha.presente.nome }}</td>
-    </tr>
-    {% endfor %}
-</table>
+    <header class="header">
+        <h1>Painel Administrativo</h1>
+        <p>Chá de Cozinha - Tamires & Daniel</p>
+    </header>
 
-<h2>Lista Completa</h2>
+    <section class="cards">
 
-<table border="1">
-    <tr>
-        <th>Presente</th>
-        <th>Status</th>
-    </tr>
+        <div class="card">
+            <h3>Total de Presentes</h3>
+            <span>{{ presentes|length }}</span>
+        </div>
 
-    {% for presente in presentes %}
-    <tr>
-        <td>{{ presente.nome }}</td>
+        <div class="card">
+            <h3>Escolhidos</h3>
+            <span>
+                {{ presentes|selectattr('escolhido')|list|length }}
+            </span>
+        </div>
 
-        <td>
-            {% if presente.escolhido %}
-                Escolhido
-            {% else %}
-                Disponível
-            {% endif %}
-        </td>
-    </tr>
-    {% endfor %}
-</table>
+        <div class="card">
+            <h3>Disponíveis</h3>
+            <span>
+                {{ presentes|rejectattr('escolhido')|list|length }}
+            </span>
+        </div>
+
+    </section>
+
+    <section class="table-section">
+
+        <h2>🎁 Presentes Escolhidos</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Convidado</th>
+                    <th>Presente</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+            {% for escolha in escolhas %}
+                <tr>
+                    <td>{{ escolha.nome_convidado }}</td>
+                    <td>{{ escolha.presente.nome }}</td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+
+    </section>
+
+    <section class="table-section">
+
+        <h2>📋 Lista Completa</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Presente</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+            {% for presente in presentes %}
+                <tr>
+
+                    <td>{{ presente.nome }}</td>
+
+                    <td>
+
+                        {% if presente.escolhido %}
+                            <span class="status escolhido">
+                                Escolhido
+                            </span>
+                        {% else %}
+                            <span class="status disponivel">
+                                Disponível
+                            </span>
+                        {% endif %}
+
+                    </td>
+
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+
+    </section>
+
+</div>
+
+</body>
+</html>
